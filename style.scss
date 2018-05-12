@@ -1,0 +1,108 @@
+@font-face {
+  font-family: 'Aniron';
+  src: local("Aniron"), url("fonts/anirm___.woff") format("woff");
+}
+
+body {
+  background-image: url("https://i.imgur.com/1yQWk1r.png");
+  font-family: 'Aniron';
+  font-size: 15px;
+}
+
+#header {
+  padding-left: 0;
+  padding-right: 0;
+  height: 55px;
+  border-bottom: 1px solid black;
+}
+
+.navbar {
+  height: 54px;
+}
+
+.navbar-brand {
+  margin-left: 16px;
+}
+
+.nav-item {
+  margin: 0 10px;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: white;
+}
+
+.active {
+  /* la class active a été déplacé de nav-item à nav-link*/
+  border-bottom: 4px solid white;
+}
+
+.vertical-line {
+  width: 1px;
+  border-right: 1px solid white;
+  height: 17px;
+}
+
+.row-precious {
+  padding: 50px;
+}
+
+#precious {
+  margin-top: 8px;
+}
+
+#ring {
+  margin-top: 8px;
+  padding: 64px 0;
+}
+
+#find {
+  margin-top: 15px;
+}
+
+#rings-back{
+  padding-left: 75px;
+}
+
+$orange : rgb(255,95,1);
+$small : 55px;
+$big : 220px;
+$yellow : rgb(255,202,1);
+$black : rgb(51,51,51);
+
+.nav-precious {
+  background-color: $orange;
+  padding: 4px 8px;
+}
+
+@mixin ring($width, $color) {
+  display: inline-block;
+  width: $width;		//variable
+  height : $width;
+  border-radius: 50%;
+  color: $color;				   //variable
+  border : $width*8/100 solid;
+  box-shadow: inset $width*2/100 $width*2/100 $width*2/100 desaturate($color, 10%), $width*2/100 $width*2/100 $width*2/100 desaturate($color, 10%);
+}
+
+.ring-orange {
+  @include ring($small, $orange);
+}
+
+.ring-yellow {
+  @include ring($big, $yellow);
+}
+
+@for $i from 1 through 6 {
+  .ringBlack-#{$i} {
+    display: inline-block;
+    border-radius: 50%;
+    color: $black;
+    border : $i*10px*10/100+2 solid;
+    box-shadow: inset $i*20px*2/100 $i*20px*2/100 $i*20px*2/100 desaturate($black, 10%), $i*20px*2/100 $i*20px*2/100 $i*20px*2/100 desaturate($black, 10%);
+    width: 35+$i*10px;
+    height : 35+$i*10px;
+    margin-bottom: -$i*3px;
+    margin-left : -20px-$i*2;
+  }
+}
